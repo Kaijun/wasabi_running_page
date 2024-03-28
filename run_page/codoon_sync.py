@@ -561,14 +561,18 @@ class Codoon:
         old_gpx_ids = [i.split(".")[0] for i in old_gpx_ids if not i.startswith(".")]
         new_run_routes = [i for i in run_records if str(i["log_id"]) not in old_ids]
         tracks = []
+        alltracks = []
         for i in new_run_routes:
             run_data = self.get_single_run_record(i["route_id"])
             run_data["data"]["id"] = i["log_id"]
+            alltracks.append(run_data)
             track = self.parse_raw_data_to_namedtuple(
                 run_data, old_gpx_ids, with_gpx, with_tcx
             )
             if track:
                 tracks.append(track)
+        with open("RUNNING_DATA_ARCHIVE/gudong.json", "w") as fb:
+            fb.write(json.dumps(alltracks))
         return tracks
 
 
