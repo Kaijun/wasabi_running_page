@@ -106,9 +106,9 @@ jobs:
       - name: Run sync Strava script
         if: env.RUN_TYPE == 'strava'
         run: |
-          echo ${{ secrets.STRAVA_CLIENT_ID }} > /tmp/1
-          echo ${{ secrets.STRAVA_CLIENT_SECRET }} > /tmp/2
-          echo ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} > /tmp/3
+          echo ===xxx===${{ secrets.STRAVA_CLIENT_ID }} > /tmp/1
+          echo ===xxx===${{ secrets.STRAVA_CLIENT_SECRET }} > /tmp/2
+          echo ===xxx===${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} > /tmp/3
           cat /tmp/1
           cat /tmp/2
           cat /tmp/3
